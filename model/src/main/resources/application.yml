@@ -1,0 +1,54 @@
+
+server:
+  # servlet:
+  #   context-path: /ai
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+  forward-headers-strategy: framework
+  port: 9090
+
+spring:
+  ai:
+    retry:
+      max-attempts: 3
+    model:
+      chat: openai
+
+    openai:
+      base-url: https://models.inference.ai.azure.com
+      api-key: ${API_KEY}
+      chat:
+        completions-path: '/chat/completions'
+        options:
+          model: gpt-4o
+          temperature: 0.7
+          max-tokens: 8000
+         # 推理模型使用
+         # max-completion-tokens:
+          http-headers:
+            x-source: spring-ai
+
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  override-with-generic-response: false
+  writer-with-order-by-keys: true
+  default-support-form-data: true
+
+  swagger-ui:
+    enabled: true
+    filter: true
+    #    operationsSorter: method
+    tagsSorter: alpha
+    displayOperationId: true
+    displayRequestDuration: true
+    docExpansion: none
+    showExtensions: true
+    showCommonExtensions: true
+    persistAuthorization: true
