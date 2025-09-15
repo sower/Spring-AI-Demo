@@ -29,6 +29,10 @@ spring:
          # max-completion-tokens:
           http-headers:
             x-source: spring-ai
+    chat:
+      client:
+        observations:
+          log-prompt: true
 
   lifecycle:
     timeout-per-shutdown-phase: 1m

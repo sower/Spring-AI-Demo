@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springaicommunity.mcp.annotation.McpToolParam;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
@@ -17,7 +18,8 @@ public class TimeTools {
 
     @McpTool(name = "current_time", description = "获取当前时间")
     public String currentTime() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return LocalDateTime.now().atZone(LocaleContextHolder.getTimeZone().toZoneId())
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     @McpTool(name = "md5", description = "获取一段文本的md5值")

@@ -1,24 +1,15 @@
 spring:
+  profiles:
+    active: http
+  application:
+    name: mcp-demo-app
+    version: 0.0.1
   ai:
     mcp:
       server:
         name: mcp-demo-server
-        version: 0.0.1
-        protocol: STREAMABLE
+        version: ${spring.application.version}
         request-timeout: 30s
-        streamable-http:
-          mcp-endpoint: /mcp
-          keep-alive-interval: 30s
 
   lifecycle:
     timeout-per-shutdown-phase: 1m
-
-server:
-  servlet:
-    context-path: /ai
-  http2:
-    enabled: true
-  compression:
-    enabled: true
-  forward-headers-strategy: framework
-  port: 8090

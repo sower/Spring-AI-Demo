@@ -1,0 +1,18 @@
+spring:
+  ai:
+    mcp:
+      server:
+        protocol: STREAMABLE
+        streamable-http:
+          mcp-endpoint: /mcp
+          keep-alive-interval: 30s
+
+server:
+  servlet:
+    context-path: /ai
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+  forward-headers-strategy: framework
+  port: 8090
