@@ -1,0 +1,50 @@
+spring:
+  ai:
+    model:
+      chat: openai
+      image: openai
+      audio:
+        transcription: openai
+        speech: openai
+
+    openai:
+      base-url: https://models.inference.ai.azure.com
+      api-key: ${API_KEY}
+      chat:
+        completions-path: '/chat/completions'
+        options:
+          model: gpt-4o
+          temperature: 0.7
+          max-tokens: 8000
+         # 推理模型使用
+         # max-completion-tokens:
+          http-headers:
+            x-source: spring-ai
+
+      embedding:
+        embeddings-path: /embeddings
+        options:
+          model: text-embedding-3-small
+
+      image:
+        options:
+          n: 3
+          model:
+
+      audio:
+        speech:
+          base-url: https://api.groq.com/openai/v1
+          api-key: ${API_KEY}
+          options:
+            model: playai-tts
+            response-format: mp3
+
+        transcription:
+          base-url: ${spring.ai.openai.audio.speech.base-url}
+          api-key: ${spring.ai.openai.audio.speech.api-key}
+          options:
+            model: whisper-large-v3
+            language: zh
+
+
+

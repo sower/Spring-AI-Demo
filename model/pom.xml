@@ -43,6 +43,12 @@
       <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
       <version>${springdoc.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>ai.ylem</groupId>
+      <artifactId>rag</artifactId>
+      <version>${project.version}</version>
+    </dependency>
   </dependencies>
 
 </project>

@@ -1,0 +1,14 @@
+
+spring:
+  ai:
+    vectorstore:
+      chroma:
+        client:
+          host: http://localhost
+          port: 8000
+          # host: https://api.trychroma.com
+          # port: 443
+        tenant-name: demoTenant
+        database-name: demoDb
+        collection-name: demoCollection
+        initialize-schema: true
